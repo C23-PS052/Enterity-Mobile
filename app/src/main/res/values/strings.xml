@@ -5,4 +5,7 @@
     <string name="daftar">Daftar</string>
     <string name="belum_punya_akun">Belum Punya Akun?</string>
     <string name="masukkan_email_dan_password_anda">Silahkan Masukkan Email dan Password Anda</string>
+    <string name="masukkan_data_dengan_benar">Masukkan Data Anda Dengan Benar</string>
+    <string name="selamat_datang">Selamat Datang!</string>
+    <string name="isLogin">islogin</string>
 </resources>

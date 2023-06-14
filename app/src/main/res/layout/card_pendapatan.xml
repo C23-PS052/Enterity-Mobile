@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8dp"
+    android:layout_margin="@dimen/_16dp"
+    app:layout_constraintTop_toBottomOf="@id/tv_penjualan">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16dp">
+
+        <TextView
+            android:id="@+id/tv_penjualan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Total Pendapatan : "
+            style="@style/titleBold16Black" />
+
+        <TextView
+            android:id="@+id/tv_value_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_penjualan"
+            app:layout_constraintTop_toTopOf="@id/tv_penjualan"
+            app:layout_constraintBottom_toBottomOf="@id/tv_penjualan"
+            android:layout_marginStart="@dimen/_4dp"
+            style="@style/titleBold16Black"
+            android:textColor="@color/primary"
+            android:text="250"/>
+
+        <TextView
+            android:id="@+id/tv_title_proyeksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_penjualan"
+            app:layout_constraintTop_toBottomOf="@id/tv_value_sales"
+            android:text="Proyeksi Penjualan : "
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/titleMedium14Black"/>
+
+        <com.db.williamchart.view.BarChartView
+            android:id="@+id/bar_chart_pendapatan"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:chart_axis="x"
+            app:chart_barsColor="#8D0DAD"
+            app:chart_barsRadius="4dp"
+            app:chart_labelsColor="@color/black"
+            app:chart_labelsSize="10sp"
+            app:chart_spacing="30dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_proyeksi"
+            app:layout_constraintStart_toStartOf="@id/tv_title_proyeksi"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

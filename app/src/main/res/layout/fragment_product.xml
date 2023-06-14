@@ -1,14 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.fragment.product.ProductFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:fillViewport="true"
+    android:background="@color/grey"
+    android:paddingBottom="@dimen/_16dp"
+    android:clipToPadding="false">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        xmlns:app="http://schemas.android.com/apk/res-auto"
 
-</FrameLayout>
+        tools:context=".ui.main.fragment.product.ProductFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbarDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/font_bold"
+                    android:text="Produk"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_start"
+            style="@style/inputfield"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="@dimen/_8dp"
+            app:endIconDrawable="@drawable/baseline_search_24"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="true"
+            app:hintEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_title_platform"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_input_start"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_regular"
+                android:gravity="center|left"
+                android:hint="Cari Produk"
+                android:textSize="@dimen/_14sp"
+                android:inputType="none"
+                android:paddingTop="8dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <TextView
+            android:id="@+id/tv_title_platform"
+            style="@style/titleBold16Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:text="Filter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_input_start" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_platform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipToPadding="true"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_platform"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_platform" />
+
+        <TextView
+            android:id="@+id/tv_title_product"
+            style="@style/titleBold16Black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16dp"
+            android:text="Daftar Produk"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_platform" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16dp"
+            android:background="@drawable/bg_round_6_grey"
+            android:backgroundTint="@color/white"
+            android:paddingHorizontal="@dimen/_16dp"
+            android:paddingBottom="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_product"
+            tools:itemCount="3"
+            android:nestedScrollingEnabled="false"
+            tools:listitem="@layout/item_product" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>

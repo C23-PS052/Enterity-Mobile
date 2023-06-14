@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8dp"
+    android:layout_margin="@dimen/_16dp"
+    app:layout_constraintTop_toBottomOf="@id/tv_channel">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_16dp">
+
+        <TextView
+            android:id="@+id/tv_penjualan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Total Transaksi : "
+            style="@style/titleBold16Black" />
+
+        <TextView
+            android:id="@+id/tv_value_sales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_penjualan"
+            app:layout_constraintTop_toTopOf="@id/tv_penjualan"
+            app:layout_constraintBottom_toBottomOf="@id/tv_penjualan"
+            android:layout_marginStart="@dimen/_4dp"
+            style="@style/titleBold16Black"
+            android:textColor="@color/primary"
+            android:text="250"/>
+
+        <TextView
+            android:id="@+id/tv_title_proyeksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/tv_penjualan"
+            app:layout_constraintTop_toBottomOf="@id/tv_value_sales"
+            android:text="Proyeksi Penjualan : "
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/titleMedium14Black"/>
+
+        <com.db.williamchart.view.DonutChartView
+            android:id="@+id/chart_channel"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:chart_donutBackgroundColor="#42A5F5"
+            app:chart_donutRoundCorners="true"
+            app:chart_donutThickness="15dp"
+            app:chart_donutTotal="100"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_proyeksi"
+            app:layout_constraintStart_toStartOf="@id/tv_title_proyeksi"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8dp"
+            app:layout_constraintEnd_toStartOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/chart_channel"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/titleMedium14Black"
+            android:textColor="#03AC0E"
+            android:text="Tokopedia : 60%"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            app:layout_constraintStart_toEndOf="@id/guideline3"
+            app:layout_constraintTop_toBottomOf="@id/chart_channel"
+            android:layout_marginTop="@dimen/_16dp"
+            style="@style/titleMedium14Black"
+            android:textColor="#EE4D2D"
+            android:text="Shopee : 40%"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

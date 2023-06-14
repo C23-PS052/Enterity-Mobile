@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_16dp"
+    android:layout_marginBottom="@dimen/_16dp"
+    >
+
+
+
+    <TextView
+        android:id="@+id/tv_product_name"
+        style="@style/titleRegular12Black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:text="Yanto Susanto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        android:layout_marginBottom="@dimen/_4dp"/>
+
+    <TextView
+        android:id="@+id/tv_platform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        android:layout_marginTop="@dimen/_4dp"
+        app:layout_constraintStart_toStartOf="@id/tv_product_name"
+        style="@style/titleBold12Black"
+        android:text="Shopee"/>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_platform"
+        app:layout_constraintBottom_toBottomOf="@id/tv_platform"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginStart="@dimen/_4dp"
+        style="@style/titleBold12Black"
+        android:textColor="#0062FF"
+        android:text="20 Transaksi"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

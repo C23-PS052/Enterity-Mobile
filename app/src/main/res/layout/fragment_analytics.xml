@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.fragment.analytics.AnalyticsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.main.fragment.analytics.AnalyticsFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_prediksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="@dimen/_16dp"
+            style="@style/titleBold14Black"
+            android:text="Prediksi Produk Terjual"/>
+
+        <include
+            android:id="@+id/layout_card_proyeksi"
+            layout="@layout/card_proyeksi"
+            />
+
+        <TextView
+            android:id="@+id/tv_penjualan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_card_proyeksi"
+            android:layout_margin="@dimen/_16dp"
+            style="@style/titleBold14Black"
+            android:text="Prediksi Produk Terjual"/>
+
+        <include
+            android:id="@+id/layout_card_pendapatan"
+            layout="@layout/card_pendapatan"
+            />
+
+        <TextView
+            android:id="@+id/tv_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_card_pendapatan"
+            android:layout_margin="@dimen/_16dp"
+            style="@style/titleBold14Black"
+            android:text="Channel"/>
+
+        <include
+            android:id="@+id/layout_card_channel"
+            layout="@layout/card_channel"
+            />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_product" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.bangkit.enterity.ui.main.fragment.chat.ChatFragment"
+        android:name="com.bangkit.enterity.ui.main.fragment.customer.CustomerFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_customer" />
 </navigation>

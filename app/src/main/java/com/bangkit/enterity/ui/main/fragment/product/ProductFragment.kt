@@ -5,56 +5,77 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.enterity.R
+import com.bangkit.enterity.databinding.FragmentProductBinding
+import com.bangkit.enterity.model.Platform
+import com.bangkit.enterity.ui.main.fragment.home.adapter.HomePlatformAdapter
+import com.bangkit.enterity.ui.main.fragment.home.adapter.HomeProductAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProductFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProductFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private lateinit var binding : FragmentProductBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false)
+        binding = FragmentProductBinding.inflate(layoutInflater)
+
+        val listFilter = listOf(
+            Platform("Semua",R.drawable.all),
+            Platform("Shopee",R.drawable.shopee),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped),
+            Platform("Tokopedia",R.drawable.tokped)
+        )
+
+        val listFilterr = listOf(
+            Platform("Semua",R.drawable.all),
+            Platform("Shopee",R.drawable.shopee),
+            Platform("Tokopedia",R.drawable.tokped),
+        )
+
+        setFilter(listFilterr)
+
+        setProduct(listFilter)
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProductFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun setFilter(list: List<Platform>) {
+        val adapterr = HomePlatformAdapter(requireContext(),list)
+        binding.rvPlatform.apply {
+            layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+            adapter = adapterr
+        }
     }
+
+    private fun setProduct(list: List<Platform>) {
+
+        val adapterr = HomeProductAdapter(requireContext(),list)
+        binding.rvProduct.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+            adapter = adapterr
+
+            addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+        }
+    }
+
 }
