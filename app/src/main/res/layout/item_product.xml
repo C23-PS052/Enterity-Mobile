@@ -42,12 +42,12 @@
 
 
     <TextView
+        android:id="@+id/tv_stok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/tv_platform"
         app:layout_constraintBottom_toBottomOf="@id/tv_platform"
         app:layout_constraintEnd_toEndOf="parent"
-
         android:layout_marginStart="@dimen/_4dp"
         style="@style/titleBold12Black"
         android:textColor="#0062FF"

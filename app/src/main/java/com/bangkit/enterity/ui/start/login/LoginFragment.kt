@@ -42,8 +42,8 @@ class LoginFragment : Fragment(), Injectable {
         binding = FragmentLoginBinding.inflate(layoutInflater)
 
         binding.btLogin.setOnClickListener {
-            startActivity(Intent(context, MainActivity::class.java))
-//            authUser()
+//            startActivity(Intent(context, MainActivity::class.java))
+            authUser()
 
 
         }
@@ -72,7 +72,7 @@ class LoginFragment : Fragment(), Injectable {
                     is ResultCustom.Success -> {
                         Toast.makeText(context, "Berhasil", Toast.LENGTH_SHORT).show()
                         binding.prgBar.visibility = View.GONE
-                        changeStatus()
+                        changeStatus(result.data.accessToken)
                         lifecycleScope.launch {
                             delay(3000)
                             startActivity(Intent(context, MainActivity::class.java))
@@ -98,13 +98,17 @@ class LoginFragment : Fragment(), Injectable {
         }
     }
 
-    private fun changeStatus() {
+    private fun changeStatus(accessToken: String) {
         val pref = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val editor = pref.edit()
         editor.putBoolean(getString(R.string.isLogin), true)
+        editor.putString(getString(R.string.token), accessToken)
         editor.apply()
-        val isLogin = pref.getBoolean(getString(R.string.isLogin), false)
-        Log.d(ContentValues.TAG, "statusnyaa: $isLogin")
+        val token = pref.getString(context?.getString(R.string.token), "")
+        Log.d(ContentValues.TAG, "bindtoken1: $token")
+        Log.d(ContentValues.TAG, "bindtoken2: $accessToken")
+//        val isLogin = pref.getBoolean(getString(R.string.isLogin), false)
+//        Log.d(ContentValues.TAG, "statusnyaa: $isLogin")
     }
 
     private fun setTextError(msg: String, editText: EditText?) {

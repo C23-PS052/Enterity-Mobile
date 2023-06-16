@@ -2,6 +2,7 @@ package com.bangkit.enterity.di.module
 
 import androidx.lifecycle.ViewModel
 import com.bangkit.enterity.di.ViewModelKey
+import com.bangkit.enterity.ui.main.MainViewModel
 import com.bangkit.enterity.ui.main.fragment.home.HomeViewModel
 import com.bangkit.enterity.ui.start.StartViewModel
 import dagger.Binds
@@ -14,15 +15,18 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(HomeViewModel::class)
-    abstract fun bindHomeVM(homeViewModel: HomeViewModel) : ViewModel
+    abstract fun bindHomeVM(homeViewModel: HomeViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainVM(homeViewModel: MainViewModel): ViewModel
 
 
     @Binds
     @IntoMap
     @ViewModelKey(StartViewModel::class)
-    abstract fun bindStartVM(startViewModel: StartViewModel) : ViewModel
-
-
+    abstract fun bindStartVM(startViewModel: StartViewModel): ViewModel
 
 
 //    @Binds

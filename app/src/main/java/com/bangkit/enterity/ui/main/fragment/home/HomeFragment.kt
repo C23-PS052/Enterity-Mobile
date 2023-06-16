@@ -11,6 +11,7 @@ import com.bangkit.enterity.databinding.FragmentHomeBinding
 import com.bangkit.enterity.databinding.HomeDataBinding
 import com.bangkit.enterity.databinding.HomeTopBinding
 import com.bangkit.enterity.di.Injectable
+import com.bangkit.enterity.ui.main.MainViewModel
 import com.bangkit.enterity.ui.main.fragment.home.ViewHolder.HomeData
 import com.bangkit.enterity.ui.main.fragment.home.ViewHolder.HomeTop
 import com.bangkit.enterity.ui.main.fragment.home.ViewHolder.HomeViewHolder
@@ -25,7 +26,7 @@ class HomeFragment : Fragment(),Injectable {
     private var listHomeViews = mutableListOf<HomeViewHolder>()
 
     @Inject
-    lateinit var viewModel: HomeViewModel
+    lateinit var viewModel: MainViewModel
 
 
 
@@ -45,7 +46,8 @@ class HomeFragment : Fragment(),Injectable {
                     HomeTopBinding.inflate(LayoutInflater.from(requireContext()),this.root,false)
                 ),
                 HomeData(
-                    HomeDataBinding.inflate(LayoutInflater.from(requireContext()),this.root,false)
+                    HomeDataBinding.inflate(LayoutInflater.from(requireContext()),this.root,false),
+                    viewLifecycleOwner
                 ),
             )
 

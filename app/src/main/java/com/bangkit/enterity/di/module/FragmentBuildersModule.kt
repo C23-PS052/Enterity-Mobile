@@ -2,6 +2,7 @@ package com.bangkit.enterity.di.module
 
 
 import com.bangkit.enterity.ui.main.fragment.analytics.AnalyticsFragment
+import com.bangkit.enterity.ui.main.fragment.customer.CustomerFragment
 import com.bangkit.enterity.ui.main.fragment.home.HomeFragment
 import com.bangkit.enterity.ui.main.fragment.product.ProductFragment
 import com.bangkit.enterity.ui.start.login.LoginFragment
@@ -27,4 +28,9 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun bindRegister(): RegisterFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindCustomer(): CustomerFragment
+
+
 }

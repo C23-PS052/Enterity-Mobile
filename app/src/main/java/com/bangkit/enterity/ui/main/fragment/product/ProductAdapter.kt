@@ -1,4 +1,4 @@
-package com.bangkit.enterity.ui.main.fragment.home.adapter
+package com.bangkit.enterity.ui.main.fragment.product
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,37 +7,32 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.enterity.databinding.ItemPlatformBinding
 import com.bangkit.enterity.databinding.ItemProductBinding
-import com.bangkit.enterity.model.DataItem
 import com.bangkit.enterity.model.DataItemProduct
-import com.bangkit.enterity.model.Platform
-import com.bangkit.enterity.ui.main.MainViewModel
 import com.bumptech.glide.Glide
-import javax.inject.Inject
 
-class HomeProductAdapter (
+class ProductAdapter  (
     private val context: Context
-)  : ListAdapter<DataItem, HomeProductAdapter.ViewHolder>(
+)  : ListAdapter<DataItemProduct, ProductAdapter.ViewHolder>(
     DIFF_CALLBACK) {
 
-
-
+    private var selectedItemPosition: Int = 0
 
 
 
     inner  class ViewHolder(private var binding : ItemProductBinding) : RecyclerView.ViewHolder(binding.root){
         private var itemPosition: Int = 0
         private val container = binding.root
-        fun bind(item : DataItem){
-            binding.tvProductName.text = item.produk?.nama_produk
-            binding.tvPlatform.text = item.platform?.nama_channel
+        fun bind(item : DataItemProduct){
+
+            binding.tvProductName.text = item.nama_produk
+            binding.tvPlatform.text =  StringBuilder("Rp. ").append(item?.harga_produk.toString())
             Glide
                 .with(context)
-                .load(item.produk?.url_produk)
+                .load(item.url_produk)
                 .into(binding.imgProduct)
 
-            binding.tvStok.text = "Stok ${item.produk?.stok.toString()}"
+            binding.tvStok.text = "Stok ${item?.stok.toString()}"
 
 
         }
@@ -46,14 +41,14 @@ class HomeProductAdapter (
     }
 
     companion object {
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<DataItem> =
-            object : DiffUtil.ItemCallback<DataItem>() {
-                override fun areItemsTheSame(oldUser: DataItem, newUser: DataItem): Boolean {
-                    return oldUser.produk?.id == newUser.produk?.id
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<DataItemProduct> =
+            object : DiffUtil.ItemCallback<DataItemProduct>() {
+                override fun areItemsTheSame(oldUser: DataItemProduct, newUser: DataItemProduct): Boolean {
+                    return oldUser.id == newUser.id
                 }
 
                 @SuppressLint("DiffUtilEquals")
-                override fun areContentsTheSame(oldUser: DataItem, newUser: DataItem): Boolean {
+                override fun areContentsTheSame(oldUser: DataItemProduct, newUser: DataItemProduct): Boolean {
                     return oldUser == newUser
                 }
             }
@@ -61,13 +56,13 @@ class HomeProductAdapter (
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeProductAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemCardEksplorBinding = ItemProductBinding.inflate(layoutInflater,parent,false)
         return ViewHolder(itemCardEksplorBinding)
     }
 
-    override fun onBindViewHolder(holder: HomeProductAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
